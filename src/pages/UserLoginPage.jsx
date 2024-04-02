@@ -17,6 +17,7 @@ export default function UserLoginPage() {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [msg, setMsg] = useState("");
+  const [isHovered, setIsHovered] = useState(false);
 
   function verificarUsuario() {
     const auth = getAuth(firebase);
@@ -45,7 +46,12 @@ export default function UserLoginPage() {
         value={userPassword}
         onChangeText={setUserPassword}
       />
-      <Pressable onPress={() => verificarUsuario()} style={styles.btn}>
+      <Pressable
+        onPress={() => verificarUsuario()}
+        style={[styles.btn, isHovered && styles.btnHovered]}
+        onPressIn={() => setIsHovered(true)}
+        onPressOut={() => setIsHovered(false)}
+      >
         <Text style={styles.btnText}>Acessar</Text>
       </Pressable>
       {msg && <Text>{msg}</Text>}
@@ -82,10 +88,14 @@ const styles = StyleSheet.create({
   },
   btn: {
     borderRadius: 4,
+    marginVertical: 8,
     backgroundColor: "#841584",
     padding: 10,
     width: "80%",
     alignItems: "center",
+  },
+  btnHovered: {
+    backgroundColor: "#9e3c9e",
   },
   btnText: {
     color: "white",

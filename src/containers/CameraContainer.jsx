@@ -9,6 +9,7 @@ export default function CameraContainer() {
   const [camera, setCamera] = useState(null);
   const [uri, setUri] = useState(null);
   const [msg, setMsg] = useState(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   async function requestCamera() {
     const permission = await Camera.requestCameraPermissionsAsync();
@@ -60,8 +61,13 @@ export default function CameraContainer() {
             }}
           />
           <View style={styles.containerBtn}>
-            <Pressable style={styles.btn} onPress={() => takePicture()}>
-              <Text style={styles.btnTitle}>Tira foto</Text>
+            <Pressable
+              style={[styles.btn, isHovered && styles.btnHovered]}
+              onPress={() => takePicture()}
+              onPressIn={() => setIsHovered(true)}
+              onPressOut={() => setIsHovered(false)}
+            >
+              <Text style={styles.btnTitle}>Tirar foto</Text>
             </Pressable>
           </View>
         </>
@@ -100,6 +106,9 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 4,
     width: 80,
+  },
+  btnHovered: {
+    backgroundColor: "#9e3c9e",
   },
   btnTitle: {
     color: "white",
