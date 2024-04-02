@@ -33,19 +33,19 @@ export default function BookListPage() {
         style={styles.input}
         value={searchTitle}
         onChangeText={(text) => setSearchTitle(text)}
-        placeholder="Filtrar por título"
+        placeholder="Filtrar por título..."
       />
       <TextInput
         style={styles.input}
         value={searchAuthor}
         onChangeText={(text) => setSearchAuthor(text)}
-        placeholder="Filtrar por autor"
+        placeholder="Filtrar por autor..."
       />
       <TextInput
         style={styles.input}
         value={searchGenre}
         onChangeText={(text) => setSearchGenre(text)}
-        placeholder="Filtrar por gênero"
+        placeholder="Filtrar por gênero..."
       />
       <FlatList
         data={books.filter(filterListBooks)}

@@ -10,8 +10,10 @@ import {
 } from "react-native";
 import { Platform, Dimensions } from "react-native";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigation } from "@react-navigation/native";
 
 export default function UserLoginPage() {
+  const navigation = useNavigation();
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [msg, setMsg] = useState("");
@@ -20,7 +22,8 @@ export default function UserLoginPage() {
     const auth = getAuth(firebase);
     signInWithEmailAndPassword(auth, userEmail, userPassword)
       .then((userCredential) => {
-        setMsg("Logado com sucesso!");
+        // setMsg("Logado com sucesso!");
+        navigation.navigate("MainPage");
       })
       .catch((error) => {
         setMsg(error.message);
@@ -29,6 +32,7 @@ export default function UserLoginPage() {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.loginTitle}>Login</Text>
       <Text>Email:</Text>
       <TextInput
         style={styles.input}
@@ -45,6 +49,12 @@ export default function UserLoginPage() {
         <Text style={styles.btnText}>Acessar</Text>
       </Pressable>
       {msg && <Text>{msg}</Text>}
+      <Text
+        style={styles.link}
+        onPress={() => navigation.navigate("UserCreatePage")}
+      >
+        Não tem uma conta? Crie uma nova!
+      </Text>
     </View>
   );
 }
@@ -55,6 +65,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F5FCFF",
+  },
+  loginTitle: {
+    fontSize: 25,
+    marginVertical: 15,
+    fontWeight: "bold",
   },
   input: {
     height: 40,
@@ -73,5 +88,8 @@ const styles = StyleSheet.create({
   btnText: {
     color: "white",
     fontWeight: "bold",
+  },
+  link: {
+    marginVertical: 15,
   },
 });

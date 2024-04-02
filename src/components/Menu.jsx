@@ -7,7 +7,7 @@ export default function Menu() {
       <View style={styles.menuItems}>
         <Text>Home</Text>
         <Text>Livros</Text>
-        <Text>Empresa</Text>
+        <Text>Galeria</Text>
         <Text>Contatos</Text>
       </View>
     </View>
@@ -17,8 +17,7 @@ export default function Menu() {
 const styles = StyleSheet.create({
   menuContainer: {
     backgroundColor: "#e2e2ee",
-    padding: 22,
-    marginBottom: 10,
+    padding: 15,
   },
   menuItems: {
     padding: 2,

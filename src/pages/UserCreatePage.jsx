@@ -10,8 +10,10 @@ import {
 } from "react-native";
 import { Platform, Dimensions } from "react-native";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigation } from "@react-navigation/native";
 
 export default function UserCreatePage() {
+  const navigation = useNavigation();
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -23,6 +25,7 @@ export default function UserCreatePage() {
     createUserWithEmailAndPassword(auth, userEmail, userPassword)
       .then((userCredential) => {
         setMsg("Conta criada com sucesso!");
+        navigation.navigate("home");
       })
       .catch((error) => {
         setMsg(error.message);
@@ -32,6 +35,7 @@ export default function UserCreatePage() {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.createTitle}>Criar nova conta</Text>
       <Text>Email:</Text>
       <TextInput
         style={styles.input}
@@ -48,6 +52,9 @@ export default function UserCreatePage() {
         <Text style={styles.btnText}>Criar conta</Text>
       </Pressable>
       {msg && <Text>{msg}</Text>}
+      <Text style={styles.link} onPress={() => navigation.navigate("home")}>
+        Já tem uma conta? Faça login
+      </Text>
     </View>
   );
 }
@@ -58,6 +65,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F5FCFF",
+  },
+  createTitle: {
+    fontSize: 25,
+    marginVertical: 15,
+    fontWeight: "bold",
   },
   input: {
     height: 40,
@@ -76,5 +88,8 @@ const styles = StyleSheet.create({
   btnText: {
     color: "white",
     fontWeight: "bold",
+  },
+  link: {
+    marginVertical: 15,
   },
 });
