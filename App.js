@@ -4,7 +4,6 @@ import Menu from './src/components/Menu';
 import BookListPage from './src/pages/BookListPage';
 import UserLoginPage from './src/pages/UserLoginPage';
 import UserCreatePage from './src/pages/UserCreatePage';
-import PhotosPage from './src/pages/PhotosPage';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MainPage from './src/pages/MainPage';
@@ -21,9 +20,9 @@ export default function App() {
         <Stack.Screen name='home' component={UserLoginPage} />
         <Stack.Screen name='UserCreatePage' component={UserCreatePage} />
         <Stack.Screen name='MainPage' component={MainPage} />
-        {/* <Stack.Screen name='PhotosPage' component={PhotosPage} />
-        <Stack.Screen name='BookListPage' component={BookListPage} />
-        <Stack.Screen name='CameraContainer' component={CameraContainer} /> */}
+
+        {/* <Stack.Screen name='BookListPage' component={BookListPage} />
+        <Stack.Screen name='CameraContainer' component={CameraContainer} />  */}
       </Stack.Navigator>
     </NavigationContainer>
     // <ScrollView>

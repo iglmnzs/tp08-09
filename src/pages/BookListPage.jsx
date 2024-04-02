@@ -28,7 +28,7 @@ export default function BookListPage() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Livros cadastrados</Text>
+      <Text style={styles.title}>Pesquise um livro</Text>
       <TextInput
         style={styles.input}
         value={searchTitle}
@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 16,
+    textAlign: "center",
   },
   input: {
     height: 40,

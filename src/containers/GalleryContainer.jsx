@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import app from "../firebase";
 import { getDownloadURL, getStorage, listAll, ref } from "firebase/storage";
 import { useState, useCallback } from "react";
@@ -19,9 +19,7 @@ export default function GalleryContainer() {
         if (!urls.includes(url)) urls.push(url);
       }
       setPhotos(urls);
-    } catch (error) {
-      // ...
-    }
+    } catch (error) {}
   }
 
   useFocusEffect(
@@ -31,14 +29,14 @@ export default function GalleryContainer() {
   );
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.title}>Galeria de Fotos</Text>
       <View style={styles.photosContainer}>
         {photos.map((uri, index) => (
           <Image key={index} style={styles.photo} source={{ uri }} />
         ))}
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -46,13 +44,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 20,
-    paddingTop: 40,
+    marginTop: 12,
   },
   title: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: "bold",
+    marginBottom: 16,
     textAlign: "center",
-    marginBottom: 20,
   },
   photosContainer: {
     flexDirection: "row",

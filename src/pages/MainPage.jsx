@@ -7,7 +7,7 @@ import Menu from "../components/Menu";
 
 const Tabs = createBottomTabNavigator();
 
-export default function PhotosPage() {
+export default function MainPage() {
   return (
     <>
       <Menu />
@@ -16,9 +16,21 @@ export default function PhotosPage() {
           headerShown: false,
         }}
       >
-        <Tabs.Screen name="BookListPage" component={BookListPage} />
-        <Tabs.Screen name="galeria" component={GalleryContainer} />
-        <Tabs.Screen name="camera" component={CameraContainer} />
+        <Tabs.Screen
+          name="BookListPage"
+          component={BookListPage}
+          options={{ title: "Livros" }}
+        />
+        <Tabs.Screen
+          name="galeria"
+          component={GalleryContainer}
+          options={{ title: "Galeria" }}
+        />
+        <Tabs.Screen
+          name="camera"
+          component={CameraContainer}
+          options={{ title: "Câmera" }}
+        />
       </Tabs.Navigator>
     </>
   );

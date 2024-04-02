@@ -74,12 +74,14 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     borderColor: "gray",
+    borderRadius: 4,
     borderWidth: 1,
     marginBottom: 10,
     padding: 10,
     width: "80%",
   },
   btn: {
+    borderRadius: 4,
     backgroundColor: "#841584",
     padding: 10,
     width: "80%",

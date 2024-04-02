@@ -78,8 +78,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     padding: 10,
     width: "80%",
+    borderRadius: 4,
   },
   btn: {
+    borderRadius: 4,
     backgroundColor: "#841584",
     padding: 10,
     width: "80%",

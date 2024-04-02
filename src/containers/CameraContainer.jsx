@@ -9,7 +9,6 @@ export default function CameraContainer() {
   const [camera, setCamera] = useState(null);
   const [uri, setUri] = useState(null);
   const [msg, setMsg] = useState(null);
-  // const [hasPermission, setPermission] = Camera.useCameraPermissions();
 
   async function requestCamera() {
     const permission = await Camera.requestCameraPermissionsAsync();
@@ -60,20 +59,24 @@ export default function CameraContainer() {
               setCamera(ref);
             }}
           />
-          <Pressable onPress={() => takePicture()}>
-            <Text>Capturar</Text>
-          </Pressable>
+          <View style={styles.containerBtn}>
+            <Pressable style={styles.btn} onPress={() => takePicture()}>
+              <Text style={styles.btnTitle}>Tira foto</Text>
+            </Pressable>
+          </View>
         </>
       )}
       {uri && (
         <>
           <Image style={styles.photo} source={{ uri }} />
-          <Pressable onPress={() => savePhoto()}>
-            <Text>Salvar</Text>
-          </Pressable>
-          <Pressable onPress={() => setUri(null)}>
-            <Text>Excluir</Text>
-          </Pressable>
+          <View style={styles.containerBtn}>
+            <Pressable style={styles.btn} onPress={() => savePhoto()}>
+              <Text style={styles.btnTitle}>Salvar</Text>
+            </Pressable>
+            <Pressable style={styles.btn} onPress={() => setUri(null)}>
+              <Text style={styles.btnTitle}>Excluir</Text>
+            </Pressable>
+          </View>
         </>
       )}
     </View>
@@ -84,7 +87,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  containerBtn: {
+    alignContent: "center",
+    alignItems: "center",
+  },
   photo: {
     flex: 1,
+  },
+  btn: {
+    backgroundColor: "#841584",
+    marginVertical: 15,
+    padding: 10,
+    borderRadius: 4,
+    width: 80,
+  },
+  btnTitle: {
+    color: "white",
+    textAlign: "center",
   },
 });
